@@ -1,4 +1,6 @@
-redis-mapper
+##redis-mapper
+
+
 
 
 Create models, save objects, and find them later.
@@ -10,18 +12,19 @@ Other primitives will be added along with sub objects and arrays.
 
 
 
-Model:
-
+##Model
+```javascript
 CustomerModel = mapper.modelFactory('Customer',
     {
         first_name: '',
         last_name:  ''
     }
 );
+```
 
 
-Save:
-
+##Save
+```javascript
 CustomerModel.save(
     {
         first_name: 'thomas',
@@ -31,14 +34,15 @@ CustomerModel.save(
 
     }
 );
+```
 
 
-Find:
-
+##Find
+```javascript
 CustomerModel.find(
     [{type: 'string', attribute: 'first_name', value: 'thomas'}], function(customer) {
 
         console.log(customer.first_name);
     }
 );
-This file was modified by JetBrains WebStorm 6.0.2 for binding GitHub repository
+```
