@@ -6,6 +6,9 @@
     "repository": {
         "url": "https://github.com/nosqlcode/redis-mapper.git"
     },
+    "dependencies": {
+        "redis": ">=0.8.5"
+    },
     "main": "./lib/main",
     "engines": {
         "node": "*"
