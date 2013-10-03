@@ -1,0 +1,13 @@
+{
+    "author": "Thomas Silva",
+    "name": "redis-mapper",
+    "description": "Redis mapping library for NodeJs.",
+    "version": "0.1.0",
+    "repository": {
+        "url": "https://github.com/nosqlcode/redis-mapper.git"
+    },
+    "main": "./lib/main",
+    "engines": {
+        "node": "*"
+    }
+}
