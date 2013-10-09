@@ -11,6 +11,11 @@ Other primitives will be added along with sub objects and arrays.
 
 
 
+##Start
+```javascript
+var mapper = require('redis-mapper')(6379, '127.0.0.1');
+```
+
 
 ##Model
 ```javascript
