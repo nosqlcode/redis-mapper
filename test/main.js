@@ -5,7 +5,7 @@
  */
 
 
-var mapper = require('./../redis-mapper/mapper');
+var mapper = require('../lib/main')(6379, '127.0.0.1');
 
 
 
