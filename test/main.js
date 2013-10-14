@@ -5,28 +5,36 @@
  */
 
 
-var mapper = require('../lib/main')(6379, '127.0.0.1');
+var mapper = require('../lib/main');
+var db = mapper(6379, '127.0.0.1');
 
 
 
 
-CustomerModel = mapper.modelFactory('Customer',
+CustomerModel = db.modelFactory('Customer',
     {
-        first_name: '',
-        last_name:  ''
+        first_name: String,
+        last_name:  String
     }
 );
 
-CustomerModel.save(
-    {
-        first_name: 'thomas',
-        last_name:  'silva'
-    },
-    function(id) {
 
-        CustomerModel.find([{type: 'string', attribute: 'first_name', value: 'thomas'}], function(results) {
+var thomas = {
+    first_name: 'thomas',
+    last_name:  'silva'
+};
 
-            console.log(JSON.stringify(results));
-        })
-    }
-);
+CustomerModel.save(thomas, function(error, id) {
+
+    if (error)
+        return console.log(error);
+
+    console.log('new customer id', id);
+    CustomerModel.find({first_name: 'thomas'}, function(error, results) {
+
+        if (error)
+            return console.log(error);
+
+        console.log(JSON.stringify(results));
+    })
+});
