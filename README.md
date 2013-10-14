@@ -13,16 +13,17 @@ Other primitives will be added along with sub objects and arrays.
 
 ##Start
 ```javascript
-var mapper = require('redis-mapper')(6379, '127.0.0.1');
+var mapper = require('../lib/main');
+var db = mapper(6379, '127.0.0.1');
 ```
 
 
 ##Model
 ```javascript
-CustomerModel = mapper.modelFactory('Customer',
+CustomerModel = db.modelFactory('Customer',
     {
-        first_name: '',
-        last_name:  ''
+        first_name: String,
+        last_name:  String
     }
 );
 ```
@@ -30,24 +31,28 @@ CustomerModel = mapper.modelFactory('Customer',
 
 ##Save
 ```javascript
-CustomerModel.save(
-    {
-        first_name: 'thomas',
-        last_name:  'silva'
-    },
-    function(id) {
+var thomas = {
+    first_name: 'thomas',
+    last_name:  'silva'
+};
 
-    }
-);
+CustomerModel.save(thomas, function(error, id) {
+
+    if (error)
+        return console.log(error);
+
+    console.log('new customer id', id);
+});
 ```
 
 
 ##Find
 ```javascript
-CustomerModel.find(
-    [{type: 'string', attribute: 'first_name', value: 'thomas'}], function(customer) {
+CustomerModel.find({first_name: 'thomas'}, function(error, results) {
 
-        console.log(customer.first_name);
-    }
-);
+    if (error)
+        return console.log(error);
+
+    console.log(JSON.stringify(results));
+});
 ```
