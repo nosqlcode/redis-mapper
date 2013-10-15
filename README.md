@@ -13,7 +13,7 @@ Other primitives will be added along with sub objects and arrays.
 
 ##Start
 ```javascript
-var mapper = require('../lib/main');
+var mapper = require('redis-mapper');
 var db = mapper(6379, '127.0.0.1');
 ```
 
